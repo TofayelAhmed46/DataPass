@@ -6,3 +6,10 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi velit soluta tota
 @section("title")
 About Page
 @endsection
+
+@section("linkmore")
+
+<h1> some text will go there
+</h1>
+@parent
+@endsection

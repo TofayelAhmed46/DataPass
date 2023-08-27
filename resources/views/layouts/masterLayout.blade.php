@@ -4,7 +4,9 @@
 <title>@yield("title")</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href=" {{asset('css/style.css')}}">
+
+@stack('css')
 </head>
 <body>
 <header>
@@ -14,9 +16,11 @@
 <section>
   <nav>
     <ul>
+      @section("linkmore")
       <li><a href="/">Home</a></li>
       <li><a href="/more">More</a></li>
       <li><a href="/about">About US</a></li>
+      @show
     </ul>
   </nav>
   
@@ -29,6 +33,7 @@
   <p>Footer</p>
 </footer>
 
+@stack("script")
 </body>
 </html>
 

@@ -35,19 +35,55 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-route::get('/user',function(){
+route::get('/user', function () {
     return view('user');
 });
-route::get('/',function(){
+route::get('/', function () {
     return view('layouts/home');
 });
 
-route::get('/more',function(){
+route::get('/more', function () {
     return view('layouts/more');
 });
 
-route::get('/about',function(){
+route::get('/about', function () {
     return view('layouts/about');
 });
+
+route::get('/json', function () {
+    return view('json');
+});
+
+//array funciton
+function data(){
+    return [
+        1 => ['name'=>"tofayel",'phone'=>"01998384",'city'=>"Rajshahi"],
+        2 => ['name'=>"tel",'phone'=>"0197567384","city"=>"dinaupur"],
+        3 => ['name'=>"tyel",'phone'=>"097867998384","city"=>"Bogura"],
+        4 => ['name'=>"tofyel",'phone'=>"009868384","city"=>"Dhaka"],
+    ];
+}
+
+route::get('/datapass', function () {
+    $w = "world";
+    //     return view('datapass', [
+//         'data' => $data,
+//         "data2" => $w
+//     ]);
+
+
+//     return view('datapass')
+//     ->with('data', $data)
+//     ->with("data2",'<script> alert("Hello world");</script>');
+
+        $datas=data();
+        return view('datapass',['datas'=>$datas]);
+});
+
+route::get('/data/{id}', function ($id) {
+    $datas=data();
+    $data=$datas[$id];
+    return view('userFile',['id'=>$data]);
+})->name("user_file");
